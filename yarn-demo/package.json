@@ -1,0 +1,11 @@
+{
+  "name": "yarn-demo",
+  "version": "1.0.0",
+  "description": "yarn demo",
+  "main": "index.js",
+  "author": "clam",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
