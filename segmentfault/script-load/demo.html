@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>脚本的加载和执行</title>
+</head>
+<body>
+    <div id="demo"></div>
+    <script src="./demo.js"></script>
+    <script>
+        console.log('2');
+        document.getElementById("demo").innerHTML = "Hello JavaScript!";
+    </script>
+    <script>
+        window.addEventListener("load",function (event) { 
+            console.log("All resources finished loading!");
+        });
+        document.addEventListener("DOMContentLoaded", function(event) {
+            console.log("DOM fully loaded and parsed");
+        });
+    </script>
+</body>
+</html>
