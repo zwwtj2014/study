@@ -1,0 +1,1 @@
+console.log('inner demo2.js');

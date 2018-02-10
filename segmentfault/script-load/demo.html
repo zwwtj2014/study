@@ -7,20 +7,22 @@
     <title>脚本的defer属性</title>
 </head>
 <body>
-    <script src="./demo.js" defer></script> <!-- 3 -->
-    <script defer>
-        console.log('script with defer'); // 1
+    <script async>
+        console.log('script with async'); // 1
     </script>
     <script>
-        console.log('script withour defer'); // 2
-    </script>
+        console.log('script withour async'); // 2
+        </script>
     <script>
         window.addEventListener("load",function (event) { 
-            console.log("All resources finished loading!"); // 5
+            console.log("All resources finished loading!"); // 最后运行
         });
         document.addEventListener("DOMContentLoaded", function(event) {
-            console.log("DOM fully loaded and parsed"); // 4
+            console.log("DOM fully loaded and parsed");
         });
     </script>
+    <script src="./demo.js" async></script> // 脚本顺序不确定
+    <script src="./demo1.js" async></script>
+    <script src="./demo2.js" async></script>
 </body>
 </html>
