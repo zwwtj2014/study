@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>XHR腳本注入</title>
+</head>
+<body>
+    <script>
+        var xhr = new XMLHttpRequest(); // 创建xhr对象
+        xhr.open("get",'./server.js',true); // 初始化一个请求, 支持CRUD
+        xhr.onreadystatechange = function () { 
+            console.log(xhr.readyState);
+            if(xhr.readyState == 4){
+                if(xhr.status >= 200 && xhr.status < 3000 || xhr.status == 304){
+                    var script = document.createElement('script');
+                    script.type = 'text/javascript';
+                    script.text = xhr.responseText;
+                    document.body.appendChild(script);
+                }
+            }
+         }
+         xhr.send(null); // 发送请求
+    </script>
+</body>
+</html>
