@@ -1,0 +1,1 @@
+console.log('inner document.write.js');

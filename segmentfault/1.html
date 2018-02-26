@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text">
+<script>
+    var input = document.querySelector('input');
+    input.addEventListener('input',aaa,false)
+    function a(e) {
+        setTimeout(function () {
+            b(e);
+        },200)
+    }
+    function b(e) {
+        input.removeEventListener('input',aaa,false);
+    }
+
+    function aaa(e) {
+        console.log(e.target.value);
+        a(e);
+    }
+</script>
+</body>
+</html>
