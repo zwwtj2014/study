@@ -3,12 +3,6 @@
 // 使用模块的config方法: 回调函数在模块加载时运行, 以便对模块进行配置, 路由就是配置的一种
 angular.module("app").config(function($stateProvider, $urlRouterProvider) {
     // 声明一个state
-    $stateProvider.state("default", {
-        url: "",
-        templateUrl: "controllers/home/index.html",
-        controller: "HomeIndexCtrl as vm"
-    });
-
     $stateProvider.state("home", {
         url: "/",
         templateUrl: "controllers/home/index.html",
