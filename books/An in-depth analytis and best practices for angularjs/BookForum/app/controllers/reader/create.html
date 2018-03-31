@@ -1,27 +1,27 @@
-<form ng-submit="vm.submit(vm.form)" novalidate="novalidate">
+<form name="form" ng-submit="vm.submit(vm.form)" novalidate="novalidate">
     <div>
         <label for="_email">邮件</label>
         <input type="email" id="_email" ng-model="vm.form.email" ng-required="true" bf-field-error>
     </div>
     <div>
         <label for="_nickname">昵称</label>
-        <input type="text" id="_nickname" ng-model="vm.form.nickname">
+        <input type="text" id="_nickname" ng-model="vm.form.nickname" bf-field-error>
     </div>
     <div>
         <label for="_password">密码</label>
-        <input type="password" id="_password" ng-model="vm.form.password">
+        <input type="password" id="_password" ng-model="vm.form.password" bf-field-error>
     </div>
     <div>
         <label for="_retypedPassword">确认密码</label>
-        <input type="password" id="_retypedPassword" ng-model="vm.retypedPassword">
+        <input type="password" id="_retypedPassword" ng-model="vm.retypedPassword" bf-field-error="{same: '确认密码必须与密码相同'}" bf-assert-same-as="vm.form.password">
     </div>
     <div>
         <label for="_captcha">图形验证码</label>
-        <input type="text" id="_captcha" ng-model="vm.form.captcha">
+        <input type="text" id="_captcha" ng-model="vm.form.captcha" bf-field-error>
         <img src="" alt="图形验证码">
     </div>
     <div>
-        <input type="checkbox" id="_accepted" ng-model="vm.accepted">
+        <input type="checkbox" id="_accepted" ng-model="vm.accepted" bf-field-error bf-assert-same-as="true">
         <label for="_accepted">
             我已阅读并同意
             <a href="">《网站服务协议》</a>
@@ -29,6 +29,6 @@
     </div>
 
     <div>
-        <button type="submit">提交</button>
+        <button type="submit" ng-disabled="form.$invalid">提交</button>
     </div>
 </form>
