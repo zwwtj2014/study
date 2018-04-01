@@ -13,7 +13,7 @@ angular.module("app").controller("ThreadListCtrl", function() {
         }
     ];
 
-    for (let i = 0; i < 10; i++) {
+    for (var i = 0; i < 10; i++) {
         vm.items.push({
             title: "这是第" + (i + 2) + "个主贴",
             poster: "clam",
