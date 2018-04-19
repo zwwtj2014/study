@@ -20,4 +20,9 @@ angular.module("app").controller("ThreadListCtrl", function() {
             dateCreated: "2018-03-31T00:00:00"
         });
     }
+
+    vm.page = {
+        index: 0,
+        size: 5
+    };
 });
