@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simple app</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.30/angular.js"></script>
+</head>
+
+<body>
+    <div ng-controller="MyController">
+        <h1>Hello {{clock.now}}</h1>
+    </div>
+    <script>
+        function MyController($scope) {
+            $scope.clock = {
+                now: new Date()
+            };
+
+            var updateClock = function () {
+                $scope.clock.now = new Date();
+            };
+
+            setInterval(() => {
+                $scope.$apply(updateClock);
+            }, 1000);
+
+            updateClock();
+        }
+    </script>
+</body>
+
+</html>

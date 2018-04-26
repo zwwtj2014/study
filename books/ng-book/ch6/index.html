@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表达式</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.30/angular.js"></script>
+    <script src="./email-parser.js"></script>
+</head>
+
+<body>
+    <div ng-app="myApp">
+        <div ng-controller="MyController">
+            <input type="text" ng-model="expr" placeholder="test expr">
+            <h2>__parseValue__</h2>
+        </div>
+
+        <div ng-controller="MyController1">
+            <input type="email" ng-model="to" placeholder="test $interpolate">
+            <textarea ng-model="emailbody"></textarea>
+            <pre>__previewText__</pre>
+        </div>
+    </div>
+
+    <script>
+        angular.module('myApp', ['emailParser']).controller('MyController', function ($scope, $parse) {
+            $scope.$watch('expr', function (newV, oldV, scope) {
+                if (newV !== oldV) {
+                    var parseFn = $parse(newV);
+                    $scope.parseValue = parseFn(scope);
+                }
+            });
+        }).controller('MyController1', ['$scope', 'EmailParser', function ($scope, EmailParser) {
+            $scope.$watch('emailbody', function (newV, oldV, scope) {
+                if (newV !== oldV) {
+                    scope.previewText = EmailParser.parser(newV, {
+                        to: scope.to
+                    });
+                }
+            })
+        }]);
+    </script>
+</body>
+
+</html>
