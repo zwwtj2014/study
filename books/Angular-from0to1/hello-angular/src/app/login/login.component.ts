@@ -6,11 +6,19 @@ import { Component, OnInit, Inject } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  username = '请输入用户名';
+  password = '请输入密码';
+
   constructor(@Inject('auth') private service) {}
 
   ngOnInit() {}
 
-  onClick(username, password) {
-    console.log(`auth result is: ${this.service.loginWithCredentials(username, password)}`);
+  onSubmit(formValue) {
+    console.log(`auth result is: ${this.service.loginWithCredentials(this.username, this.password)}`);
+  }
+
+  onfocus() {
+    console.log(123);
+    this.username = '';
   }
 }
