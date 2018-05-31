@@ -12,9 +12,11 @@ import { routing } from './app.routes';
 import { TodoComponent } from './todo/todo.component';
 import { TodoService } from './todo/todo.service';
 import { InMemoryTodoDbService } from './todo/todo-data';
+import { TodoFooterComponent } from './todo/todo-footer/todo-footer.component';
+import { TodoHeaderComponent } from './todo/todo-header/todo-header.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, TodoComponent],
+  declarations: [AppComponent, LoginComponent, TodoComponent, TodoFooterComponent, TodoHeaderComponent],
   imports: [
     BrowserModule, // 提供了运行在浏览器中的应用所需要的关键服务和指令
     FormsModule, // 提供了表单处理和双向绑定等服务和指令
