@@ -6,7 +6,7 @@
       <div *ngIf="usernameRef.errors?.minlength">should be at least 3 charactors</div>
       <input type="password" name="password" [(ngModel)]="password" required #passwordRef="ngModel"> {{passwordRef.errors | json}}
       <div *ngIf="passwordRef.errors?.required">this is required</div>
-      <button type="submit">Sbmit</button>
+      <button type="submit">Submit</button>
     </fieldset>
   </form>
 </div>

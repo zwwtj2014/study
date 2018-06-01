@@ -5,7 +5,7 @@ import { Headers, Http } from '@angular/http';
 
 @Injectable()
 export class TodoService {
-  private api_url = 'api/todos';
+  private api_url = 'http://localhost:3000/todos';
   private headers = new Headers({
     'Content-Type': 'application/json'
   });
@@ -34,7 +34,7 @@ export class TodoService {
 
     const updatedTodo = Object.assign({}, todo, { completed: !todo.completed });
     return this.http
-      .put(url, JSON.stringify(updatedTodo), { headers: this.headers })
+      .patch(url, JSON.stringify({ completed: !todo.completed }), { headers: this.headers })
       .toPromise()
       .then(() => updatedTodo)
       .catch(this.handleError);
@@ -42,7 +42,7 @@ export class TodoService {
 
   // DELETE /todos/:id
   deleteTodoById(id: string): Promise<void> {
-    const url = `${this.api_url}/id`;
+    const url = `${this.api_url}/${id}`;
     return this.http
       .delete(url, { headers: this.headers })
       .toPromise()
@@ -57,6 +57,24 @@ export class TodoService {
       .toPromise()
       .then(res => res.json() as Todo[])
       .catch(this.handleError);
+  }
+  filterTodos(filter: string) {
+    switch (filter) {
+      case 'ACTIVE':
+        return this.http
+          .get(`${this.api_url}?completed=false`)
+          .toPromise()
+          .then(res => res.json() as Todo[])
+          .catch(this.handleError);
+      case 'COMPLETED':
+        return this.http
+          .get(`${this.api_url}?completed=true`)
+          .toPromise()
+          .then(res => res.json() as Todo[])
+          .catch(this.handleError);
+      default:
+        return this.getTodos();
+    }
   }
 
   private handleError(error: any): Promise<any> {

@@ -1,17 +1,17 @@
 <footer class="footer" *ngIf="itemCount > 0">
   <span class="todo-count">
-    <strong>itemCount</strong>{{itemCount == 1 ? 'item': 'items'}} left
+    <strong>{{itemCount}}</strong> {{itemCount == 1 ? 'item': 'items'}} left
   </span>
   <ul class="filters">
     <li>
-      <a (click)="toggleAll()">All</a>
+      <a routerLink="/todo/ALL">All</a>
     </li>
     <li>
-      <a href="">Active</a>
+      <a routerLink="/todo/ACTIVE">Active</a>
     </li>
     <li>
-      <a href="">Completed</a>
+      <a routerLink="/todo/COMPLETED">Completed</a>
     </li>
   </ul>
-  <button class="clear-completed" (click)="clearCompleted()">Clear completed</button>
+  <button class="clear-completed" (click)="onClick()">Clear completed</button>
 </footer>
