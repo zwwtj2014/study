@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Todo } from './todo.model';
 import { v4 as UUID } from 'uuid';
 import { Headers, Http } from '@angular/http';
+import { Todo } from '../domain/entities';
 
 @Injectable()
 export class TodoService {
   private api_url = 'http://localhost:3000/todos';
+  private userId: number;
   private headers = new Headers({
     'Content-Type': 'application/json'
   });
@@ -14,10 +15,13 @@ export class TodoService {
 
   // POST /todos
   addTodo(desc: string): Promise<Todo> {
+    const userId = +localStorage.getItem('userId');
+
     const todo: Todo = {
       id: UUID(),
       desc: desc,
-      completed: false
+      completed: false,
+      userId
     };
     return this.http
       .post(this.api_url, JSON.stringify(todo), {
@@ -52,23 +56,26 @@ export class TodoService {
 
   // GET /todos
   getTodos(): Promise<Todo[]> {
+    const userId = +localStorage.getItem('userId');
     return this.http
-      .get(this.api_url)
+      .get(`${this.api_url}?userId=${userId}`)
       .toPromise()
       .then(res => res.json() as Todo[])
       .catch(this.handleError);
   }
   filterTodos(filter: string) {
+    const userId = +localStorage.getItem('userId');
+    const url = `${this.api_url}?userId=${userId}`;
     switch (filter) {
       case 'ACTIVE':
         return this.http
-          .get(`${this.api_url}?completed=false`)
+          .get(`${url}&completed=false`)
           .toPromise()
           .then(res => res.json() as Todo[])
           .catch(this.handleError);
       case 'COMPLETED':
         return this.http
-          .get(`${this.api_url}?completed=true`)
+          .get(`${url}&completed=true`)
           .toPromise()
           .then(res => res.json() as Todo[])
           .catch(this.handleError);

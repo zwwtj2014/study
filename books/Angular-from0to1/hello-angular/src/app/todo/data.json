@@ -1,0 +1,64 @@
+{
+  "todos": [
+    {
+      "id": "f823b191-7799-438d-8d78-fcb1e468fc78",
+      "desc": "blablabla",
+      "completed": false,
+      "userId": 1
+    },
+    {
+      "id": "9a1e3e9a-061d-4f8a-bb15-ae2ae1571596",
+      "desc": "zwww",
+      "completed": true,
+      "userId": 2
+    },
+    {
+      "id": "f1696257-5aab-452a-b959-5eec0770f272",
+      "desc": "asd",
+      "completed": false,
+      "userId": 1
+    },
+    {
+      "id": "6773ee29-3b5b-4fe9-8c95-a67ef2431842",
+      "desc": "djj",
+      "completed": false,
+      "userId": 2
+    },
+    {
+      "id": "ece7651c-699b-4d24-851c-198bfea6b3d0",
+      "desc": "test",
+      "completed": false,
+      "userId": 2
+    },
+    {
+      "id": "414c261b-8573-4e58-be0b-f73aca233518",
+      "desc": "",
+      "completed": false,
+      "userId": 2
+    },
+    {
+      "id": "fb46c9c5-253f-4792-a574-748291ba11e8",
+      "desc": "zxczxcasqweqwexczasd",
+      "completed": false,
+      "userId": 2
+    },
+    {
+      "id": "65f73fa8-e73c-45d6-9fe0-8bb1f1fe4432",
+      "desc": "zwwwwwww",
+      "completed": false,
+      "userId": 2
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "djj",
+      "password": "1234"
+    },
+    {
+      "id": 2,
+      "username": "zww",
+      "password": "4321"
+    }
+  ]
+}

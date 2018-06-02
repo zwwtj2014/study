@@ -4,6 +4,7 @@
       <input type="text" name="username" [(ngModel)]="username" required #usernameRef="ngModel" minlength="3" (focus)="onfocus()"> {{usernameRef.errors | json}}
       <div *ngIf="usernameRef.errors?.required">this is required</div>
       <div *ngIf="usernameRef.errors?.minlength">should be at least 3 charactors</div>
+      <div *ngIf="auth?.hasError">{{auth.errMsg}}</div>
       <input type="password" name="password" [(ngModel)]="password" required #passwordRef="ngModel"> {{passwordRef.errors | json}}
       <div *ngIf="passwordRef.errors?.required">this is required</div>
       <button type="submit">Submit</button>

@@ -7,9 +7,10 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './core/auth.service';
-import { routing } from './app.routes';
 import { TodoService } from './todo/todo.service';
 import { TodoModule } from './todo/todo.module';
+import { CoreModule } from './core/core.module';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent],
@@ -17,11 +18,11 @@ import { TodoModule } from './todo/todo.module';
     BrowserModule, // 提供了运行在浏览器中的应用所需要的关键服务和指令
     FormsModule, // 提供了表单处理和双向绑定等服务和指令
     HttpModule,
-    routing,
+    AppRoutingModule,
+    CoreModule,
     TodoModule
   ],
   providers: [
-    TodoService,
     {
       provide: 'auth',
       useClass: AuthService
