@@ -8,3 +8,15 @@
 </ul>
 
 <router-outlet></router-outlet>
+
+<hr>
+
+<p>Without Pipe: Today is {{birthday}}</p>
+
+<p>With Pipe: Today is {{birthday | date: "MM/dd/yy"}}</p>
+
+<p>The time is: {{birthday | date:'shortTime'}}</p>
+
+<p>The time is: {{birthday | date:'medium' | trimSpace}}</p>
+
+<p>The time is: {{birthday | date:'medium' | uppercase}}</p>

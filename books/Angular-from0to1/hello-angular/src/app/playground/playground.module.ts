@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { PlaygroundComponent } from './playground.component';
 import { OneComponent } from './one/one.component';
 import { TwoComponent } from './two/two.component';
 import { ThreeComponent } from './three/three.component';
 import { PlaygroundRoutingModule } from './playground-routing.module';
-import { FormsModule } from '@angular/forms';
+import { TrimSpacePipe } from './trim-space.pipe';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, PlaygroundRoutingModule],
-  declarations: [PlaygroundComponent, OneComponent, TwoComponent, ThreeComponent]
+  imports: [SharedModule, PlaygroundRoutingModule],
+  declarations: [PlaygroundComponent, OneComponent, TwoComponent, ThreeComponent, TrimSpacePipe]
 })
-export class PlaygroundModule {}
+export class PlaygroundModule {
+  birthday = new Date();
+  constructor() {}
+}

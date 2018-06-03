@@ -6,5 +6,6 @@ import { debug } from 'util';
   styleUrls: ['./playground.component.css']
 })
 export class PlaygroundComponent {
+  birthday = new Date();
   constructor() {}
 }
