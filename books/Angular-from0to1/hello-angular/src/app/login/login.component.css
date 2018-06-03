@@ -1,7 +1,14 @@
-input.ng-invalid {
-  border: 3px solid red;
+.login-container {
+  min-height: 100%;
+  max-height: 100%;
+  background-size: cover;
+  /* <------ */
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
-input.ng-untouched {
-  color: gray;
+.login-form {
+  background-color: transparent;
+  display: table;
+  padding-top: 50px;
 }

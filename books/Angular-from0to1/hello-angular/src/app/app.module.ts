@@ -12,6 +12,7 @@ import { TodoModule } from './todo/todo.module';
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { MdlModule } from '@angular-mdl/core';
+import { BingImageService } from './login/bing-image.service';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent],
@@ -28,6 +29,10 @@ import { MdlModule } from '@angular-mdl/core';
     {
       provide: 'auth',
       useClass: AuthService
+    },
+    {
+      provide: 'bing',
+      useClass: BingImageService
     }
   ],
   bootstrap: [AppComponent]

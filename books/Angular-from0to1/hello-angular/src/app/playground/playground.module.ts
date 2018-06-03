@@ -6,10 +6,11 @@ import { ThreeComponent } from './three/three.component';
 import { PlaygroundRoutingModule } from './playground-routing.module';
 import { TrimSpacePipe } from './trim-space.pipe';
 import { SharedModule } from '../shared/shared.module';
+import { LogOnClickDirective } from './log-onclick.directive';
 
 @NgModule({
   imports: [SharedModule, PlaygroundRoutingModule],
-  declarations: [PlaygroundComponent, OneComponent, TwoComponent, ThreeComponent, TrimSpacePipe]
+  declarations: [PlaygroundComponent, OneComponent, TwoComponent, ThreeComponent, TrimSpacePipe, LogOnClickDirective]
 })
 export class PlaygroundModule {
   birthday = new Date();
