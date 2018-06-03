@@ -13,9 +13,12 @@ import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { MdlModule } from '@angular-mdl/core';
 import { BingImageService } from './login/bing-image.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RegisterDialogComponent } from './login/register-dialog/register-dialog.component';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule, // 提供了运行在浏览器中的应用所需要的关键服务和指令
     FormsModule, // 提供了表单处理和双向绑定等服务和指令
@@ -23,16 +26,14 @@ import { BingImageService } from './login/bing-image.service';
     AppRoutingModule,
     CoreModule,
     TodoModule,
-    MdlModule
+    LoginModule,
+    MdlModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {
       provide: 'auth',
       useClass: AuthService
-    },
-    {
-      provide: 'bing',
-      useClass: BingImageService
     }
   ],
   bootstrap: [AppComponent]
