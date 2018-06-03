@@ -7,12 +7,6 @@
       "userId": 1
     },
     {
-      "id": "9a1e3e9a-061d-4f8a-bb15-ae2ae1571596",
-      "desc": "zwww",
-      "completed": true,
-      "userId": 2
-    },
-    {
       "id": "f1696257-5aab-452a-b959-5eec0770f272",
       "desc": "asd",
       "completed": false,
@@ -53,6 +47,18 @@
       "desc": "hgfvyuvvnbvhj",
       "completed": false,
       "userId": 2
+    },
+    {
+      "id": "dc076df6-706e-43a2-8366-1327000cc5c9",
+      "desc": "asdasdzxasdzxc",
+      "completed": false,
+      "userId": 0
+    },
+    {
+      "id": "32b47a49-c312-4b08-99fe-7e9499de872f",
+      "desc": "asdzxc",
+      "completed": false,
+      "userId": 0
     }
   ],
   "users": [

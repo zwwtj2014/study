@@ -11,6 +11,10 @@ import { AuthGuardService } from './auth-guard.service';
       provide: 'user',
       useClass: UserService
     },
+    {
+      provide: 'auth',
+      useClass: AuthService
+    },
     AuthGuardService
   ]
 })

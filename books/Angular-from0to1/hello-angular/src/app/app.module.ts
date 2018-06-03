@@ -11,6 +11,7 @@ import { TodoService } from './todo/todo.service';
 import { TodoModule } from './todo/todo.module';
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
+import { MdlModule } from '@angular-mdl/core';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent],
@@ -20,7 +21,8 @@ import { AppRoutingModule } from './app-routing.module';
     HttpModule,
     AppRoutingModule,
     CoreModule,
-    TodoModule
+    TodoModule,
+    MdlModule
   ],
   providers: [
     {

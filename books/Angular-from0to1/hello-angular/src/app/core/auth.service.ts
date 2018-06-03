@@ -1,30 +1,44 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http } from '@angular/http';
 import { Auth } from '../domain/entities';
+// tslint:disable-next-line:import-blacklist
+import { ReplaySubject, Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class AuthService {
+  auth: Auth = { hasError: true, redirectUrl: '', errMsg: 'not logger in' };
+  subject: ReplaySubject<Auth> = new ReplaySubject<Auth>(1);
+
   constructor(private http: Http, @Inject('user') private userService) {}
 
-  loginWithCredentials(username: string, password: string): Promise<Auth> {
-    return this.userService.findUser(username).then(user => {
+  getAuth(): Observable<Auth> {
+    return this.subject.asObservable();
+  }
+
+  unAuth(): void {
+    this.auth = Object.assign({}, this.auth, { user: null, hasError: true, redirectUrl: '', errMsg: 'not logged in' });
+    this.subject.next(this.auth);
+  }
+
+  loginWithCredentials(username: string, password: string): Observable<Auth> {
+    return this.userService.findUser(username).map(user => {
       const auth = new Auth();
-      localStorage.removeItem('userId');
-      const redirectUrl = localStorage.getItem('redirectUrl') === null ? '/' : localStorage.getItem('redirectUrl');
-      auth.redirectUrl = redirectUrl;
       if (null === user) {
         auth.hasError = true;
         auth.errMsg = 'user not found';
       } else if (password === user.password) {
-        auth.user = Object.assign({}, user);
+        auth.user = user;
         auth.hasError = false;
-        localStorage.setItem('userId', user.id);
+        auth.errMsg = null;
       } else {
+        auth.user = null;
         auth.hasError = true;
         auth.errMsg = 'password not match';
       }
 
-      return auth;
+      this.auth = Object.assign({}, auth);
+      this.subject.next(this.auth);
+      return this.auth;
     });
   }
 
