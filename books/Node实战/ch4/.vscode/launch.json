@@ -14,7 +14,7 @@
             "type": "node",
             "request": "launch",
             "name": "form.js",
-            "program": "${workspaceFolder}/form.js"
+            "program": "${workspaceFolder}/upload-formidable.js"
         }
     ]
 }
