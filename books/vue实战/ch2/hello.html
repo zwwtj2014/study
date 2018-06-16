@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" placeholder="你的名字" v-model="name">
+        <br> {{name}}
+        <hr> {{date | formatDate}}
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                name: 'clam',
+                date: new Date()
+            },
+            filters: {
+                formatDate: function (val) {
+                    let date = new Date(val);
+                    let year = date.getFullYear();
+                    let month = padStart(date.getMonth() + 1);
+                    let day = padStart(date.getDate());
+                    let hours = padStart(date.getHours());
+                    let minutes = padStart(date.getMinutes());
+                    let seconds = padStart(date.getSeconds());
+
+                    return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
+                }
+            },
+            methods: {
+                init: function (val) {
+                    this.name = val;
+                }
+            },
+            created: function () {
+                console.log(this.name);
+                console.log(this.$el); // undefined
+
+                this.init('created_zww');
+            },
+
+            mounted: function () {
+                console.log(this.name);
+                console.log(this.$el); // 此时$el才挂载上，才可以访问
+
+                // let _this = this;
+                this.timer = setInterval(() => {
+                    this.date = new Date();
+                }, 1000);
+
+                // this.init('zww');
+            },
+            beforeDestroy: function () {
+                if (this.timer) {
+                    clearInterval(this.timer);
+                }
+            }
+        });
+
+        function padStart(val) {
+            return val < 10 ? '0' + val : val;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>对象语法</h2>
+        <div class="static" :class="{'active': isActive, 'error': isError}">
+            :class="{'active': isActive, 'error': isError}" 普通对象绑定
+            <br>
+            <input type="checkbox" v-model="isActive"> isAction
+        </div>
+        <div class="static1" :class="classes">:class="classes" 对象支持计算属性</div>
+        <hr>
+        <h2>数组语法</h2>
+        <div :class="[isActive ? activeCls: '', errorCls]">:class="[isActive ? activeCls: '', errorCls]" 数组可以支持三元表达式</div>
+        <div :class="[ { 'active': isActive }, errorCls]">:class="[ { 'active': isActive }, errorCls]" 数组可以配合对象使用</div>
+        <div :class="arrClasses">:class="arrClasses" 数组对象支持计算属性</div>
+        <hr>
+        <h2>在组件上使用</h2>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                isActive: true,
+                isError: true,
+                activeCls: 'active',
+                errorCls: 'error',
+                size: 'large',
+                disabled: true
+            },
+            computed: {
+                classes: function () {
+                    return {
+                        'active': this.isActive && !this.error,
+                        'text-fail': this.error && this.error.type === 'fail'
+                    };
+                },
+                arrClasses: function () {
+                    return [
+                        'btn',
+                        {
+                            ['btn-' + this.size]: this.size !== '',
+                            ['btn-disabled']: this.disabled
+                        }
+                    ];
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
