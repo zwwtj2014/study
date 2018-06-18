@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <div id="app0">
+        <my-component message="来自父组件的数据"></my-component>
+        <my-component message="来自父组件的数据"></my-component>
+        <my-component message="来自父组件的数据"></my-component>
+    </div>
+    <div id="app1">
+        {{parentObj.name}}
+        <hr>
+        <input type="text" placeholder="输入..." v-model="parentData">
+        <my-component :message="parentData" :child-obj="parentObj"></my-component>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('my-component', {
+            props: ['message', 'childObj'],
+            template: `
+                <div>
+                    {{message}}
+                    {{childObj}}
+                    <button @click="inc">{{ counter }}</button>
+                </div>
+            `,
+            data: function () {
+                return {
+                    counter: 0
+                }
+            },
+            methods: {
+                inc() {
+                    this.counter++;
+                    this.childObj.name = this.message;
+                }
+            }
+        });
+        Vue.component('my');
+        var app0 = new Vue({
+            el: '#app0'
+        });
+
+        var app1 = new Vue({
+            el: '#app1',
+            data: {
+                parentData: '',
+                parentObj: {
+                    name: 'clam'
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

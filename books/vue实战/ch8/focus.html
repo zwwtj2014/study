@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>指令基本用法</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-focus>
+        <div v-test="{msg: 'hello', name: 'clam'}"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.directive('focus', {
+            bind: function () {
+                console.log('bind: ' + this);
+            },
+            inserted: function (el) {
+                console.log('inserted: ' + this);
+                el.focus();
+            },
+            update: function () {
+                console.log('update: ' + this);
+            },
+            componentUpdated: function () {
+                console.log('componentUpdated: ' + this);
+            },
+            unbind: function () {
+                console.log('unbind: ' + this);
+            }
+        });
+
+        Vue.directive('test', {
+            bind: function (el, binding, vnode) {
+                console.log(binding.value.msg);
+                console.log(binding.value.name);
+            }
+        });
+        var app = new Vue({
+            el: '#app'
+        });
+    </script>
+</body>
+
+</html>

@@ -2,8 +2,13 @@
  * node module => exports & require
  */
 
-exports.sayHello = function () {
-    return 'Hello';
-}
+// var hello = function () {
+//     return 'hello';
+// };
+module.exports = hello;
 
-exports.node = 'node!';
+function hello() {
+    return 'update hello';
+};
+
+// exports.node = 'node!';

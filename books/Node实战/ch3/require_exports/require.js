@@ -1,3 +1,3 @@
 const ex = require('./export');
 
-console.log(`${ex.sayHello()} ${ex.node}`); // Hello node!
+console.log(`${ex()} ${ex.node}`); // Hello node!

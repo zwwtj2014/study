@@ -42,6 +42,24 @@ export class AuthService {
     });
   }
 
+  register(username: string, password: string): Observable<Auth> {
+    const toAddUser = {
+      username: username,
+      password: password
+    };
+
+    return this.userService
+      .findUser(username)
+      .filter(user => user === null)
+      .switchMap(auth => {
+        return this.userService.addUser(toAddUser).map(u => {
+          this.auth = Object.assign({}, { user: u, hasError: false, errMsg: null, redirectUrl: null });
+          this.subject.next(this.auth);
+          return this.auth;
+        });
+      });
+  }
+
   private handleError(error: any): Promise<any> {
     console.log(`An error occurred: ${error}`);
     return Promise.reject(error.message || error);
