@@ -1,0 +1,18 @@
+{
+    "name": "flow_demo",
+    "scripts": {
+        "flow": "flow"
+    },
+    "devDependencies": {
+        "babel-eslint": "^8.2.6",
+        "eslint": "^5.1.0",
+        "eslint-config-prettier": "^2.9.0",
+        "eslint-config-vue": "^2.0.2",
+        "eslint-plugin-flowtype": "^2.50.0",
+        "eslint-plugin-html": "^4.0.5",
+        "eslint-plugin-prettier": "^2.6.2",
+        "eslint-plugin-vue": "^4.5.0",
+        "flow-bin": "^0.76.0",
+        "prettier": "^1.13.7"
+    }
+}
