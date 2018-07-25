@@ -1,11 +1,10 @@
 'use strict';
 
-// src/foo.js
-var foo = 'hello world!';
+var version = "1.0.0";
 
 // src/main.js
-function main () {
-    console.log(foo);
+function main$1 () {
+    console.log(`version: ${version}`);
 }
 
-module.exports = main;
+module.exports = main$1;
