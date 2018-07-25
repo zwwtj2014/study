@@ -2,5 +2,11 @@
   "name": "first-rollup",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "scripts": {
+    "rollup": "rollup -c"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "rollup-plugin-json": "^3.0.0"
+  }
 }
