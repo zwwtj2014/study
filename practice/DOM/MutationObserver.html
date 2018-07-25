@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MutationObserver 示例程序</title>
+</head>
+
+<body>
+    <div id="app" class="test" zww="123"> Test DIV </div>
+
+    <Script>
+        const callback = (mutationRecords, observer) => {
+            console.log(observer);
+            mutationRecords.forEach(mutation => {
+                console.log(mutation);
+            });
+        }
+        const observer = new MutationObserver(callback);
+
+        const config = {
+            attributes: true,
+            characterData: true,
+            childList: true,
+            subtree: true,
+            attributeOldValue: true,
+            characterDataOldValue: true
+        };
+
+        let target = document.querySelector('#app');
+
+        observer.observe(target, config);
+
+        setTimeout(() => {
+            var mutations = observer.takeRecords();
+
+            if (mutations) {
+                callback(mutations);
+            }
+            observer.disconnect();
+        }, 1000 * 60);
+    </Script>
+</body>
+
+</html>
