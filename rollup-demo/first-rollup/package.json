@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "rollup": "rollup -c"
+    "rollup": "rollup -c config.js"
   },
   "license": "MIT",
   "devDependencies": {
     "rollup-plugin-json": "^3.0.0"
+  },
+  "dependencies": {
+    "the-answer": "^1.0.0"
   }
 }

@@ -235,3 +235,7 @@ rollup-pluginutils@^2.2.0:
   dependencies:
     estree-walker "^0.5.2"
     micromatch "^2.3.11"
+
+the-answer@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/the-answer/-/the-answer-1.0.0.tgz#6dbc4c9db469d4f437120b09e44700fc320f170b"
