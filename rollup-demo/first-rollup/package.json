@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "rollup": "rollup -c config.js"
+    "rollup": "rollup -c rollup.config.js"
   },
   "license": "MIT",
   "devDependencies": {
