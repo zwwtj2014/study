@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flex layout</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="flex-direction">
+        <h2>测试Flex-direction</h2>
+        <div>
+            <select name="direction" id="direction">
+                <option>row</option>
+                <option>row-reverse</option>
+                <option>column</option>
+                <option>column-reverse</option>
+            </select>
+        </div>
+        <div id="box1" class="box">
+            <div class="entity">1</div>
+            <div class="entity">2</div>
+            <div class="entity">3</div>
+        </div>
+    </div>
+    <div class="flex-wrap">
+        <h2>测试Flex-wrap</h2>
+        <div>
+            <select name="wrap" id="wrap">
+                <option>nowrap</option>
+                <option>wrap</option>
+                <option>wrap-reverse</option>
+            </select>
+        </div>
+        <div id="box2" class="box">
+            <div class="entity">0</div>
+            <div class="entity">1</div>
+            <div class="entity">2</div>
+            <div class="entity">3</div>
+            <div class="entity">4</div>
+            <div class="entity">5</div>
+            <div class="entity">6</div>
+            <div class="entity">7</div>
+        </div>
+    </div>
+    <script>
+        function selectDirection() {
+            let dir = document.getElementById('direction');
+            let box1 = document.getElementById('box1');
+            dir.addEventListener("change", function (e) {
+                box1.style.flexDirection = dir.value;
+            });
+        }
+
+        function selectWrap() {
+            let wrap = document.getElementById('wrap');
+            let box2 = document.getElementById('box2');
+            wrap.addEventListener("change", function (e) {
+                box2.style.flexWrap = wrap.value;
+            });
+        }
+
+        selectDirection();
+        selectWrap();
+    </script>
+</body>
+
+</html>

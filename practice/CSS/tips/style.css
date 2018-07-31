@@ -1,0 +1,17 @@
+#wrapper {
+    width: 200px;
+    height: 80px;
+    padding: 10px;
+    background: rgb(255, 187, 51);
+}
+
+#content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: rgb(85, 136, 187);
+    color: #fff;
+    font-size: 14px;
+    border-radius: 20px;
+}

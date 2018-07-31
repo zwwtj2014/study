@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrap {
+            border: 3px solid red;
+            width: 600px;
+            height: 600px;
+            margin: 50px auto;
+        }
+
+        #inner {
+            padding: 100px;
+            width: 300px;
+            height: 200px;
+            margin: 50px auto;
+            border: 20px solid blue;
+            overflow: auto;
+        }
+
+        #content {
+            width: 200px;
+            height: 100px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="inner">
+            <div id="content"></div>
+        </div>
+    </div>
+
+    <script>
+        debugger;
+        var inner = document.getElementById('inner');
+        var content = document.getElementById('content');
+        //辅助变量，获取元素的宽和高
+        var style = getComputedStyle(inner);
+
+        //width & height
+        console.log('width= ' + style.width); // ''
+        console.log('height= ' + style.height); // ''
+
+        //padding
+        console.log('paddingt-top=' + style.paddingTop);
+        console.log('paddingt-bottom= ' + style.paddingBottom);
+        console.log('paddingt-left= ' + style.paddingLeft);
+        console.log('paddingt-right= ' + style.paddingRight);
+
+        //border
+        console.log('border-top-width= ' + style.borderTopWidth);
+        console.log('border-bottom-width= ' + style.borderBottomWidth);
+        console.log('border-left-width= ' + style.borderLeftWidth);
+        console.log('border-right-width= ' + style.borderRightWidth);
+
+        //offsetWidth & offsetWidth
+        console.log('offsetWidth= ' + inner.offsetWidth);
+        console.log('offsetHeight= ' + inner.offsetHeight);
+
+        //clientWidth & clientHeight
+        console.log('clientWidth= ' + inner.clientWidth);
+        console.log('clientHeight= ' + inner.clientHeight);
+
+        // scrollWidth & scrollHeight
+        console.log('scrollWidth= ' + inner.scrollWidth);
+        console.log('scrollHeight= ' + inner.scrollHeight);
+
+        // #content.offsetHeight
+        console.log('#content.offsetHeight= ' + content.offsetHeight);
+    </script>
+</body>

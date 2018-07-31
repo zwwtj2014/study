@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>理解伪元素: :before 和 :after</title>
+    <style>
+        p{
+            margin-bottom: 100px;
+        }
+        p::before{
+            content: open-quote;
+            font-size: 24px;
+            text-align: center;
+            line-height: 42px;
+            color: #fff;
+            background: #ddd;
+            float: left;
+            position: relative;
+            top: 30px;
+            border-radius: 25px;
+
+            display: block;
+            height: 25px;
+            width: 25px;
+            transition: all 1000ms;
+        }
+        p::after{
+            content: close-quote;
+            font-size: 24px;
+            text-align: center;
+            line-height: 42px;
+            color: #fff;
+            background: #ddd;
+            float: right;
+            position: relative;
+            bottom: 40px;
+            border-radius: 25px;
+
+            display: block;
+            height: 25px;
+            width: 25px;
+        }
+        p:hover::after, p:hover::before{
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        1.实际上，伪元素在CSS1中就已经存在，但是我们现在讨论的:before和:after是在CSS2.1中发布的。起初伪元素的语法是使用一个冒号“:”，但是随着web的发展，在CSS3中伪元素使用两个冒号“::”——也就变成了::before和::after——以便将它与伪类区分开（如:hover，:active等）。
+        2.生成的元素默认是内联元素，所以当我们想指定它们的宽度和高度的时候，我们首先得用display: block把它们声明为块级元素
+    </p>
+    <img src="./640.png">
+</body>
+</html>

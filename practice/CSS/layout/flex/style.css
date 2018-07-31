@@ -1,0 +1,29 @@
+.flex-direction .box{
+    display: flex;
+    width: 300px;
+    height: 300px;
+    flex-direction: row;
+}
+
+
+.flex-direction .entity{
+    width: 80px;
+    height: 80px;
+    background-color: gold;
+    margin: 10px 10px;
+}
+
+.flex-wrap .box{
+    display: flex;
+    width: 300px;
+    height: 300px;
+    flex-wrap: nowrap;
+}
+
+
+.flex-wrap .entity{
+    width: 80px;
+    height: 80px;
+    background-color: gold;
+    margin: 10px 10px;
+}
