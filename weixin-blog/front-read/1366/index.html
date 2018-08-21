@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>对于常规页面的 首次加载、页面关闭、刷新 等操作都可以通过 window.onload 和 window.onbeforeunload 事件来监听页面进入和离开， 浏览器前进后退可以通过 pageshow 和 pagehide 处理。</p>
+
+    <div>
+        对于单页应用内部的跳转可以转化为两个问题
+        <ul>
+            <li>监听路由变化</li>
+            <li>判断变化的URL是否为不同页面</li>
+        </ul>
+    </div>
+
+    <div>
+        <a href="http://www.baidu.com">跳转到百度</a>
+    </div>
+
+    <script>
+        window.onload = function () {
+            console.log('inner window.onload');
+        }
+
+        window.onbeforeunload = function () {
+            console.log('inner window.onbeforeunload');
+        }
+
+        window.addEventListener('pageshow', e => {
+            console.log('pageshow:');
+            console.log(event);
+        })
+
+        window.addEventListener('pagehide', e => {
+            console.log('pagehide:');
+            console.log(e);
+        })
+
+        let _wr = function (type) {
+            let orig = window.history[type];
+            return function () {
+                let rv = orig.apply(this, arguments);
+                let e = new Event(type.toLowerCase());
+                e.arguments = arguments;
+                window.dispatchEvent(e);
+                return rv;
+            };
+        }
+
+        window.history.pushState = _wr('pushState');
+        window.history.replaceState = _wr('replaceState');
+
+        window.addEventListener('pushstate', e => {
+            console.log('inner pushstate: ');
+            console.log(e);
+        });
+        window.addEventListener('replacestate', e => {
+            console.log('inner replacestate: ');
+            console.log(e);
+        });
+        window.addEventListener('popstate', e => {
+            console.log('inner popstate: ');
+            console.log(e);
+        });
+
+        document.addEventListener('visibilitychange', function (event) {
+            console.log(document.hidden, document.visibilityState)
+        })
+
+        var EventUtil = {
+            addHandler: function (element, type, handler) {
+                if (element.addEventListener) {
+                    element.addEventListener(type,
+                        handler, false);
+                } else if (element.attachEvent) {
+                    element.attachEvent("on" + type, handler);
+                } else {
+                    element["on" + type] = handler;
+                }
+            }
+        };
+        (function () {
+            var showCount = 0;
+            EventUtil.addHandler(window, "load", function () {
+                alert("Load fired");
+            });
+            EventUtil.addHandler(window, "pageshow", function (event) {
+                showCount++;
+                alert("Show has been fired " + showCount + "times.");
+            });
+        })();
+
+        var EventUtil = {
+            addHandler: function (element, type, handler) {
+                if (element.addEventListener) {
+                    element.addEventListener(type,
+                        handler, false);
+                } else if (element.attachEvent) {
+                    element.attachEvent("on" + type, handler);
+                } else {
+                    element["on" + type] = handler;
+                }
+            }
+        };
+        EventUtil.addHandler(window, "pagehide", function (event) {
+            alert("Hiding. Persisted? " + event.persisted);
+        });
+    </script>
+</body>
+
+</html>
